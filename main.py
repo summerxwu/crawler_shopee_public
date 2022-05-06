@@ -2,10 +2,10 @@ from view.get_shop_detail import Crawler_shop_detail
 from view.get_product_url import Crawler_product_id
 from view.get_product_detail import Crawler_product_detail
 
-# from view.clean_data import run_clean
+#from view.clean_data import run_clean
 
-# from config.config import config
-# from google.cloud import bigquery as bq
+from config.config import config
+from google.cloud import bigquery as bq
 
 import time
 import datetime
@@ -17,7 +17,7 @@ now = lambda: datetime.datetime.now().strftime("%Y/%m/%d-%H:%M:%S")
 class Crawler:
     def __init__(self, user_dict):
         # 連線 bigqeury
-        # self.client = bq.Client()
+        self.client = bq.Client()
 
         # init
         self.input_shop_ids = user_dict["input_shop_ids"]
@@ -68,22 +68,6 @@ if __name__ == "__main__":
             },
             "input_shop_ids": [
                 5547415,
-                22189057,
-                1517097,
-                3323966,
-                1971812,
-                8016627,
-                80078149,
-                7314701,
-                151143321,
-                47924061,
-                29951329,
-                9532352,
-                15659558,
-                31945247,
-                2678128,
-                46474821,
-                4287756,
             ],
             "input_product_ids": [],
         }
