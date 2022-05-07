@@ -1,3 +1,4 @@
+from tkinter import W
 from view.get_shop_detail import Crawler_shop_detail
 from view.get_product_url import Crawler_product_id
 from view.get_product_detail import Crawler_product_detail
@@ -52,9 +53,9 @@ class Crawler:
         print(now(), "step4_清理資料 & 存入：", len(df.index))
 
         # To bigquery
-        # table = self.client.dataset('crawler_product_detail').table('data')
-        # job = self.client.load_table_from_dataframe(df, table)
-        # job.result()
+        table = self.client.dataset('crawler_product_detail').table('data')
+        job = self.client.load_table_from_dataframe(df, table)
+        job.result()
 
 
 if __name__ == "__main__":
@@ -74,7 +75,7 @@ if __name__ == "__main__":
     }
 
     # 載入 Bigquery
-    # config["development"]
+    config["development"]
     time_start = time.time()
 
     user_dict = user_dict["a0025071@gmail.com"]
